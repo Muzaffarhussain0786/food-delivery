@@ -1,0 +1,1911 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baba Chicken - Best Butter Chicken in Shastri Nagar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #fc8019;
+            --primary-light: #ffe8d9;
+            --secondary-color: #2b1e16;
+            --text-dark: #3d4152;
+            --text-light: #686b78;
+            --border-color: #e9e9eb;
+            --highlight-color: #f8f8f8;
+            --success-color: #48c479;
+            --error-color: #e74c3c;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 8px 16px rgba(0, 0, 0, 0.12);
+        }
+        
+        html, body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            min-height: 100vh;
+            min-width: 100vw;
+            background-color: white;
+            color: var(--text-dark);
+            line-height: 1.5;
+        }
+        .container {
+            width: 100vw;
+            height: 100vh;
+            max-width: none;
+            margin: 0;
+            padding: 0;
+            padding-bottom: 0;
+            display: flex;
+            flex-direction: column;
+        }
+        .main-layout {
+            display: flex;
+            flex-direction: row;
+            align-items: stretch;
+            width: 100vw;
+            height: 100vh;
+        }
+        .left-column {
+            width: 25vw;
+            min-width: 200px;
+            max-width: 500px;
+            position: fixed;
+            left: 0;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto;
+            padding: 20px;
+            border-right: 1px solid var(--border-color);
+            background: #fff;
+            z-index: 10;
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none;  /* IE and Edge */
+        }
+        .left-column::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, Opera */
+        }
+        .right-column {
+            width: 50vw;
+            min-width: 320px;
+            margin-left: 25vw;
+            padding: 20px;
+            height: 100vh;
+            overflow-y: auto;
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none;  /* IE and Edge */
+        }
+        .right-column::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, Opera */
+        }
+        .additional-items-sidebar {
+            width: 25vw;
+            min-width: 220px;
+            max-width: 400px;
+            margin-left: 0;
+            padding: 20px 10px 20px 20px;
+            background: #f8f8f8;
+            border-left: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            gap: 20px;
+            height: 100vh;
+            overflow-y: auto;
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none;  /* IE and Edge */
+        }
+        .additional-items-sidebar::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, Opera */
+        }
+        .additional-items-sidebar .menu-container {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            padding: 0;
+        }
+        .additional-items-sidebar .menu-item {
+            background: white;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            padding: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        .additional-items-sidebar .menu-item-image {
+            width: 70px;
+            height: 70px;
+            border-radius: 8px;
+            object-fit: cover;
+            margin-right: 0;
+            box-shadow: none;
+        }
+        .additional-items-sidebar .menu-item-content {
+            flex: 1;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .restaurant-header {
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .restaurant-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+        
+        .restaurant-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 20px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.7));
+            color: white;
+        }
+        
+        .restaurant-name {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        
+        .restaurant-info {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+        
+        .restaurant-rating {
+            display: flex;
+            align-items: center;
+            background-color: white;
+            color: var(--text-dark);
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+            margin-right: 10px;
+        }
+        
+        .rating-star {
+            color: var(--primary-color);
+            font-size: 12px;
+            margin-right: 3px;
+        }
+        
+        .divider {
+            height: 1px;
+            background-color: var(--border-color);
+            margin: 15px 20px;
+        }
+        
+        .section-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin: 0 20px 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .section-title i {
+            margin-right: 10px;
+            color: var(--primary-color);
+        }
+        
+        .highlights-container {
+            padding: 0 20px;
+        }
+        
+        .highlight-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            font-size: 14px;
+        }
+        
+        .highlight-icon {
+            width: 24px;
+            height: 24px;
+            background-color: var(--primary-light);
+            color: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            font-size: 12px;
+        }
+        
+        .offer-banner {
+            background-color: var(--primary-light);
+            padding: 15px 20px;
+            margin: 0 20px 20px;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        .offer-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .offer-title i {
+            margin-right: 8px;
+        }
+        
+        .offer-subtitle {
+            font-size: 14px;
+            color: var(--text-light);
+        }
+        
+        .filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 0 20px 20px;
+        }
+        
+        .filter-item {
+            position: relative;
+        }
+        
+        .filter-item input {
+            position: absolute;
+            opacity: 0;
+        }
+        
+        .filter-item label {
+            display: inline-block;
+            padding: 8px 15px;
+            background-color: white;
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .filter-item input:checked + label {
+            background-color: var(--primary-light);
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+        
+        .coupon-offer {
+            background-color: var(--highlight-color);
+            padding: 15px 20px;
+            margin: 0 20px 20px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: var(--shadow);
+        }
+        
+        .coupon-text {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        
+        .view-details {
+            color: var(--primary-color);
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .view-details i {
+            margin-left: 5px;
+            font-size: 12px;
+        }
+        
+        .menu-category {
+            margin-bottom: 25px;
+        }
+        
+        .category-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin: 0 20px 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--primary-color);
+        }
+        
+        .menu-container {
+            padding: 0 20px;
+        }
+        
+        .menu-item {
+            padding: 15px 0;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            transition: transform 0.2s;
+        }
+        
+        .menu-item:hover {
+            transform: translateX(5px);
+        }
+        
+        .menu-item-image {
+            width: 140px;
+            height: 140px;
+            border-radius: 8px;
+            object-fit: cover;
+            margin-right: 15px;
+            box-shadow: var(--shadow);
+        }
+        
+        .menu-item-content {
+            flex: 1;
+        }
+        
+        .menu-item-title {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 5px;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .menu-item-highlight {
+            font-size: 12px;
+            color: var(--success-color);
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+        
+        .menu-item-price {
+            display: flex;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+        
+        .current-price {
+            font-weight: 700;
+            margin-right: 10px;
+        }
+        
+        .original-price {
+            text-decoration: line-through;
+            color: var(--text-light);
+            font-size: 14px;
+            margin-right: 10px;
+        }
+        
+        .discount {
+            color: var(--primary-color);
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .menu-item-desc {
+            font-size: 14px;
+            color: var(--text-light);
+            margin-bottom: 5px;
+        }
+        
+        .menu-item-note {
+            font-size: 12px;
+            color: var(--text-light);
+            font-style: italic;
+        }
+        
+        .add-to-cart {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 8px;
+            transition: all 0.2s;
+        }
+        
+        .add-to-cart:hover {
+            background-color: #e67317;
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .added {
+            background-color: var(--success-color);
+        }
+        
+        .search-container {
+            position: relative;
+            margin: 20px;
+            box-shadow: var(--shadow);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .search-container input {
+            width: 100%;
+            padding: 15px 20px 15px 40px;
+            border: none;
+            font-size: 16px;
+            outline: none;
+        }
+        
+        .search-icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary-color);
+        }
+        
+        .floating-cart {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            box-shadow: 0 4px 12px rgba(252, 128, 25, 0.3);
+            z-index: 100;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        
+        .floating-cart:hover {
+            transform: scale(1.05);
+        }
+        
+        .cart-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: white;
+            color: var(--primary-color);
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 700;
+        }
+        
+        .veg-icon {
+            color: var(--success-color);
+            margin-right: 5px;
+        }
+        
+        .non-veg-icon {
+            color: var(--error-color);
+            margin-right: 5px;
+        }
+        
+        /* Cart Modal */
+        .cart-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .cart-content {
+            background-color: white;
+            width: 90%;
+            max-width: 500px;
+            max-height: 80vh;
+            border-radius: 10px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .cart-header {
+            padding: 15px 20px;
+            background-color: var(--primary-color);
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .cart-title {
+            font-size: 18px;
+            font-weight: 700;
+        }
+        
+        .close-cart {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+        }
+        
+        .cart-items {
+            flex: 1;
+            overflow-y: auto;
+            padding: 15px;
+        }
+        
+        .cart-item {
+            display: flex;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .cart-item-image {
+            width: 70px;
+            height: 70px;
+            border-radius: 8px;
+            object-fit: cover;
+            margin-right: 15px;
+        }
+        
+        .cart-item-details {
+            flex: 1;
+        }
+        
+        .cart-item-name {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .cart-item-price {
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+        
+        .cart-item-controls {
+            display: flex;
+            align-items: center;
+        }
+        
+        .quantity-btn {
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            border: 1px solid var(--border-color);
+            background: none;
+            font-weight: 700;
+            cursor: pointer;
+        }
+        
+        .quantity {
+            margin: 0 10px;
+            min-width: 20px;
+            text-align: center;
+        }
+        
+        .remove-item {
+            margin-left: auto;
+            color: var(--error-color);
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .cart-footer {
+            padding: 15px 20px;
+            background-color: var(--highlight-color);
+            border-top: 1px solid var(--border-color);
+        }
+        
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 700;
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+        
+        .checkout-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        
+        .checkout-btn:hover {
+            background-color: #e67317;
+        }
+        
+        .empty-cart {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-light);
+        }
+        
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            background-color: var(--success-color);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            box-shadow: var(--shadow-hover);
+            z-index: 1001;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s;
+        }
+        
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        @media (max-width: 480px) {
+            .menu-item {
+                flex-direction: column;
+            }
+            
+            .menu-item-image {
+                width: 100%;
+                height: 200px;
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="main-layout">
+            <div class="left-column">
+                <div class="restaurant-header">
+                    <img src="https://images.unsplash.com/photo-1559847844-5315695dadae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Baba Chicken Restaurant" class="restaurant-image">
+                    <div class="restaurant-overlay">
+                        <h1 class="restaurant-name">Burger Hacker</h1>
+                        <div class="restaurant-info">
+                            <span class="restaurant-rating">
+                                <span class="rating-star">★</span>
+                                4.5
+                            </span>
+                            <span>900 m · ET block
+                            <span style="margin: 0 5px;">·</span>
+                            <span>5–10 mins · Schedule for later</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="highlights-container">
+                    <h2 class="section-title">
+                        <i class="fas fa-award"></i>Best in Champ Kulcha
+                    </h2>
+                    <div class="highlight-item">
+                        <div class="highlight-icon">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <strong>Last 100 orders without complaints</strong>
+                    </div>
+                    <div class="highlight-item">
+                        <div class="highlight-icon">
+                            <i class="fas fa-box"></i>
+                        </div>
+                         packaging charges
+                    </div>
+                    <div class="highlight-item">
+                        <div class="highlight-icon">
+                            <i class="fas fa-redo"></i>
+                        </div>
+                        Frequently reordered
+                    </div>
+                    <div class="highlight-item">
+                        <div class="highlight-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <strong>Loved by ALL</strong>
+                    </div>
+                </div>
+                
+                <div class="divider"></div>
+                
+                <div class="offer-banner">
+                    <div class="offer-title">
+                        <i class="fas fa-tag"></i>50% OFF up to ₹100
+                    </div>
+                    <div class="offer-subtitle">8 offers available</div>
+                </div>
+                
+                <div>
+                    <h2 class="section-title">
+                        <i class="fas fa-filter"></i>Filters
+                    </h2>
+                    <div class="filters">
+                        <div class="filter-item">
+                            <input type="checkbox" id="veg" class="filter-checkbox">
+                            <label for="veg"><i class="fas fa-leaf veg-icon"></i>Veg</label>
+                        </div>
+                        <div class="filter-item">
+                            <input type="checkbox" id="recommended" class="filter-checkbox">
+                            <label for="recommended"><i class="fas fa-thumbs-up"></i>Recommended</label>
+                        </div>
+                        <div class="filter-item">
+                            <input type="checkbox" id="spicy" class="filter-checkbox">
+                            <label for="spicy">Spicy</label>
+                        </div>
+                        <div class="filter-item">
+                            <input type="checkbox" id="snacks" class="filter-checkbox">
+                            <label for="snacks">Snacks</label>
+                        </div>
+                        <div class="filter-item">
+                            <input type="checkbox" id="fries-sandwiches" class="filter-checkbox">
+                            <label for="fries-sandwiches">Fries & Sandwich</label>
+                        </div>
+                        <div class="filter-item">
+                            <input type="checkbox" id="momos" class="filter-checkbox">
+                            <label for="momos">Momos</label>
+                        </div>
+                        <div class="filter-item">
+                            <input type="checkbox" id="beverages" class="filter-checkbox">
+                            <label for="beverages">Beverages</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="divider"></div>
+                
+                <div class="coupon-offer">
+                    <div class="coupon-text">FLAT 50% OFF</div>
+                    <a href="#" class="view-details">
+                        View coupon details
+                        <i class="fas fa-chevron-right"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="right-column">
+                <div class="menu-category" data-category="burgers-wraps">
+                    <h3 class="category-title">Burgers & Wraps</h3>
+                    <div class="menu-container">
+                        <div class="menu-item" data-item-id="1" data-veg="true" data-reordered="true" data-spicy="false" data-recommended="true">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbV99RCBOONtEciCm857490YDIkj_slCo4zg&s" alt="Classic Veg. Burger" class="menu-item-image">
+                            <div class="menu-item-content">
+                                <div class="menu-item-title">
+                                    <span>Classic Veg. Burger</span>
+                                </div>
+                                <div class="menu-item-price">
+                                    <span class="current-price">₹99</span>
+                                </div>
+                                <p class="menu-item-desc">A classic vegetarian burger with fresh veggies and special sauce.</p>
+                                <button class="add-to-cart">ADD +</button>
+                            </div>
+                        </div>
+                        <div class="menu-item" data-item-id="2" data-veg="true" data-reordered="false" data-spicy="true" data-recommended="true">
+                            <img src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/RX_THUMBNAIL/IMAGES/VENDOR/2024/12/31/ea13cfef-a659-41c5-9fc1-bdc6fd644475_1016715.jpg" alt="Punjabi Tadka Burger" class="menu-item-image">
+                            <div class="menu-item-content">
+                                <div class="menu-item-title">
+                                    <span>Punjabi Tadka Burger</span>
+                                </div>
+                                <div class="menu-item-price">
+                                    <span class="current-price">₹119</span>
+                                </div>
+                                <p class="menu-item-desc">Spicy Punjabi-style burger with tangy sauces and veggies.</p>
+                                <button class="add-to-cart">ADD +</button>
+                            </div>
+                        </div>
+                        <div class="menu-item" data-item-id="3" data-veg="true" data-reordered="true" data-spicy="true" data-recommended="false">
+                            <img src="https://cdn.shopify.com/s/files/1/0517/4609/files/Augustine_D_Souza_Tandoori_chicken_Burger_c6230925-722a-4987-a51c-4a1eea56c8da_480x480.jpg?v=1732025944" alt="Tandoori Punch Burger" class="menu-item-image">
+                            <div class="menu-item-content">
+                                <div class="menu-item-title">
+                                    <span>Tandoori Punch Burger</span>
+                                </div>
+                                <div class="menu-item-price">
+                                    <span class="current-price">₹129</span>
+                                </div>
+                                <p class="menu-item-desc">Burger with a smoky tandoori flavor and fresh veggies.</p>
+                                <button class="add-to-cart">ADD +</button>
+                            </div>
+                        </div>
+                        <div class="menu-item" data-item-id="4" data-veg="true" data-reordered="false" data-spicy="true" data-recommended="false">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsHWuGF0tflawDLfZdkxo6qKZmR--Ga5_clw&s" alt="Mexican Burger" class="menu-item-image">
+                            <div class="menu-item-content">
+                                <div class="menu-item-title">
+                                    <span>Mexican Burger</span>
+                                </div>
+                                <div class="menu-item-price">
+                                    <span class="current-price">₹139</span>
+                                </div>
+                                <p class="menu-item-desc">Burger with Mexican spices, beans, and salsa.</p>
+                                <button class="add-to-cart">ADD +</button>
+                            </div>
+                        </div>
+                        <div class="menu-item" data-item-id="5" data-veg="true" data-reordered="true" data-spicy="false" data-recommended="true">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQszoTNStAg61W-Re402dXnjclIqOA8i4CuKf7GeE8PaP6jUNvxQxgZcR85-89PDNi5THA&usqp=CAU" alt="Chana Kabab Burger" class="menu-item-image">
+                            <div class="menu-item-content">
+                                <div class="menu-item-title">
+                                    <span>Chana Kabab Burger</span>
+                                </div>
+                                <div class="menu-item-price">
+                                    <span class="current-price">₹119</span>
+                                </div>
+                                <p class="menu-item-desc">Burger with a flavorful chana kabab patty and fresh veggies.</p>
+                                <button class="add-to-cart">ADD +</button>
+                            </div>
+                        </div>
+                        <div class="menu-item" data-item-id="6" data-veg="true" data-reordered="false" data-spicy="false" data-recommended="false">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTj9pBgPjzhnNOF8TN1oGA6dBb-x0IkY17V8QrHiZUbdO7VvDEHKREYqSIwpx95M7Msg5M&usqp=CAU" alt="Crunchy Paneer Burger" class="menu-item-image">
+                            <div class="menu-item-content">
+                                <div class="menu-item-title">
+                                    <span>Crunchy Paneer Burger</span>
+                                </div>
+                                <div class="menu-item-price">
+                                    <span class="current-price">₹149</span>
+                                </div>
+                                <p class="menu-item-desc">Crispy paneer patty burger with fresh veggies and sauces.</p>
+                                <button class="add-to-cart">ADD +</button>
+                            </div>
+                        </div>
+                        <div class="menu-item" data-item-id="7" data-veg="true" data-reordered="true" data-spicy="false" data-recommended="true">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRF2A2QdcI1BATLcwwWnJXnqOD9XI4rUXeimg&s" alt="Aloo Tikki Wrap" class="menu-item-image">
+                            <div class="menu-item-content">
+                                <div class="menu-item-title">
+                                    <span>Aloo Tikki Wrap</span>
+                                </div>
+                                <div class="menu-item-price">
+                                    <span class="current-price">₹99</span>
+                                </div>
+                                <p class="menu-item-desc">Wrap filled with spiced aloo tikki and veggies.</p>
+                                <button class="add-to-cart">ADD +</button>
+                            </div>
+                        </div>
+                        <div class="menu-item" data-item-id="8" data-veg="true" data-reordered="false" data-spicy="true" data-recommended="false">
+                            <img src="https://instamart-media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_960,w_960//InstamartAssets/Receipes/paneer_tikka_wrap.webp" alt="Punjabi Tadka Wrap" class="menu-item-image">
+                            <div class="menu-item-content">
+                                <div class="menu-item-title">
+                                    <span>Punjabi Tadka Wrap</span>
+                                </div>
+                                <div class="menu-item-price">
+                                    <span class="current-price">₹119</span>
+                                </div>
+                                <p class="menu-item-desc">Wrap with spicy Punjabi-style filling and veggies.</p>
+                                <button class="add-to-cart">ADD +</button>
+                            </div>
+                        </div>
+                        <div class="menu-item" data-item-id="9" data-veg="true" data-reordered="false" data-spicy="true" data-recommended="false">
+                            <img src="https://www.vibrantplate.com/wp-content/uploads/2018/12/Tortilla-wraps-08-720x720.jpg" alt="Mexican Wrap" class="menu-item-image">
+                            <div class="menu-item-content">
+                                <div class="menu-item-title">
+                                    <span>Mexican Wrap</span>
+                                </div>
+                                <div class="menu-item-price">
+                                    <span class="current-price">₹129</span>
+                                </div>
+                                <p class="menu-item-desc">Wrap with Mexican spices, beans, and salsa.</p>
+                                <button class="add-to-cart">ADD +</button>
+                            </div>
+                        </div>
+                        <div class="menu-item" data-item-id="10" data-veg="true" data-reordered="true" data-spicy="false" data-recommended="true">
+                            <img src="https://storage.googleapis.com/shy-pub/274490/1669380283670_seek.jpeg" alt="Chana Kabab Wrap" class="menu-item-image">
+                            <div class="menu-item-content">
+                                <div class="menu-item-title">
+                                    <span>Chana Kabab Wrap</span>
+                                </div>
+                                <div class="menu-item-price">
+                                    <span class="current-price">₹119</span>
+                                </div>
+                                <p class="menu-item-desc">Wrap with chana kabab and fresh veggies.</p>
+                                <button class="add-to-cart">ADD +</button>
+                            </div>
+                        </div>
+                        <div class="menu-item" data-item-id="11" data-veg="true" data-reordered="false" data-spicy="false" data-recommended="false">
+                            <img src="https://cdn.uengage.io/uploads/18085/image-646359-1717590397.jpeg" alt="Crunchy Paneer Wrap" class="menu-item-image">
+                            <div class="menu-item-content">
+                                <div class="menu-item-title">
+                                    <span>Crunchy Paneer Wrap</span>
+                                </div>
+                                <div class="menu-item-price">
+                                    <span class="current-price">₹149</span>
+                                </div>
+                                <p class="menu-item-desc">Wrap with crispy paneer and veggies.</p>
+                                <button class="add-to-cart">ADD +</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-category" data-category="fries-sandwiches">
+                    <h3 class="category-title">Fries & Sandwiches</h3>
+                    <div class="menu-container">
+                        <div class="menu-item" data-item-id="12" data-veg="true" data-reordered="true" data-spicy="false" data-recommended="true">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSV-9bU-mJULT6KuH3fJyF1HhVLA4z_D2Ouuw&s" alt="Salted Fries" class="menu-item-image">
+                            <div class="menu-item-content">
+                                <div class="menu-item-title">
+                                    <span>Salted Fries</span>
+                                </div>
+                                <div class="menu-item-price">
+                                    <span class="current-price">₹69</span>
+                                </div>
+                                <p class="menu-item-desc">Classic salted French fries.</p>
+                                <button class="add-to-cart">ADD +</button>
+                            </div>
+                        </div>
+                        <div class="menu-item" data-item-id="13" data-veg="true" data-reordered="false" data-spicy="true" data-recommended="false">
+                            <img src="https://www.chilitochoc.com/wp-content/uploads/2022/09/crispy-masala-fries.jpg" alt="Masala Fries" class="menu-item-image">
+                            <div class="menu-item-content">
+                                <div class="menu-item-title">
+                                    <span>Masala Fries</span>
+                                </div>
+                                <div class="menu-item-price">
+                                    <span class="current-price">₹79</span>
+                                </div>
+                                <p class="menu-item-desc">Fries tossed in spicy masala seasoning.</p>
+                                <button class="add-to-cart">ADD +</button>
+                            </div>
+                        </div>
+                        <div class="menu-item" data-item-id="14" data-veg="true" data-reordered="true" data-spicy="true" data-recommended="false">
+                            <img src="https://rppizzeria.com/web/image/product.template/206/image_1024?unique=142cabe" alt="Peri-Peri Fries" class="menu-item-image">
+                            <div class="menu-item-content">
+                                <div class="menu-item-title">
+                                    <span>Peri-Peri Fries</span>
+                                </div>
+                                <div class="menu-item-price">
+                                    <span class="current-price">₹89</span>
+                                </div>
+                                <p class="menu-item-desc">Crispy fries with peri-peri spice mix.</p>
+                                <button class="add-to-cart">ADD +</button>
+                            </div>
+                        </div>
+                        <div class="menu-item" data-item-id="15" data-veg="true" data-reordered="false" data-spicy="false" data-recommended="true">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5-7pjzFkzPIx8xUOX0CklIkCOue5iHa9zUw&s" alt="Cheesy Fries" class="menu-item-image">
+                            <div class="menu-item-content">
+                                <div class="menu-item-title">
+                                    <span>Cheesy Fries</span>
+                                </div>
+                                <div class="menu-item-price">
+                                    <span class="current-price">₹99</span>
+                                </div>
+                                <p class="menu-item-desc">Fries topped with creamy cheese sauce.</p>
+                                <button class="add-to-cart">ADD +</button>
+                            </div>
+                        </div>
+                        <div class="menu-item" data-item-id="16" data-veg="true" data-reordered="false" data-spicy="true" data-recommended="false">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNxciKb1XxfNJFQ3Z7QN4XEzjQ-Vc5JfBiYQ&s" alt="Cheesy Peri-Peri" class="menu-item-image">
+                            <div class="menu-item-content">
+                                <div class="menu-item-title">
+                                    <span>Cheesy Peri-Peri</span>
+                                </div>
+                                <div class="menu-item-price">
+                                    <span class="current-price">₹109</span>
+                                </div>
+                                <p class="menu-item-desc">Peri-peri fries loaded with cheese sauce.</p>
+                                <button class="add-to-cart">ADD +</button>
+                            </div>
+                        </div>
+                        <div class="menu-item" data-item-id="17" data-veg="true" data-reordered="true" data-spicy="false" data-recommended="true">
+                            <img src="https://i.ytimg.com/vi/AYxjqZfA9YQ/maxresdefault.jpg" alt="Simply Veg. Sandwich" class="menu-item-image">
+                            <div class="menu-item-content">
+                                <div class="menu-item-title">
+                                    <span>Simply Veg. Sandwich</span>
+                                </div>
+                                <div class="menu-item-price">
+                                    <span class="current-price">₹79</span>
+                                </div>
+                                <p class="menu-item-desc">Simple and fresh vegetarian sandwich.</p>
+                                <button class="add-to-cart">ADD +</button>
+                            </div>
+                        </div>
+                        <div class="menu-item" data-item-id="18" data-veg="true" data-reordered="false" data-spicy="false" data-recommended="false">
+                            <img src="https://www.cookclickndevour.com/wp-content/uploads/2016/03/cream-cheese-sandwich-recipe-b.jpg" alt="Creamy Cheese Sandwich" class="menu-item-image">
+                            <div class="menu-item-content">
+                                <div class="menu-item-title">
+                                    <span>Creamy Cheese Sandwich</span>
+                                </div>
+                                <div class="menu-item-price">
+                                    <span class="current-price">₹99</span>
+                                </div>
+                                <p class="menu-item-desc">Sandwich with creamy cheese filling.</p>
+                                <button class="add-to-cart">ADD +</button>
+                            </div>
+                        </div>
+                        <div class="menu-item" data-item-id="19" data-veg="true" data-reordered="false" data-spicy="false" data-recommended="false">
+                            <img src="https://www.vegrecipesofindia.com/wp-content/uploads/2013/07/corn-sandwich-recipe-1.jpg" alt="Cheese Corn Sandwich" class="menu-item-image">
+                            <div class="menu-item-content">
+                                <div class="menu-item-title">
+                                    <span>Cheese Corn Sandwich</span>
+                                </div>
+                                <div class="menu-item-price">
+                                    <span class="current-price">₹109</span>
+                                </div>
+                                <p class="menu-item-desc">Sandwich with cheese and sweet corn filling.</p>
+                                <button class="add-to-cart">ADD +</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-category" data-category="momos">
+                    <h3 class="category-title">Momos</h3>
+                    <div class="menu-container">
+                        <div class="menu-item" data-item-id="20" data-veg="true" data-reordered="true" data-spicy="false" data-recommended="true">
+                            <img src="https://www.thespruceeats.com/thmb/UnVh_-znw7ikMUciZIx5sNqBtTU=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/steamed-momos-wontons-1957616-hero-01-1c59e22bad0347daa8f0dfe12894bc3c.jpg" alt="Veg. Steam Momos" class="menu-item-image">
+                            <div class="menu-item-content">
+                                <div class="menu-item-title">
+                                    <span>Veg. Steam Momos</span>
+                                </div>
+                                <div class="menu-item-price">
+                                    <span class="current-price">₹99</span>
+                                </div>
+                                <p class="menu-item-desc">Steamed momos stuffed with fresh vegetables.</p>
+                                <button class="add-to-cart">ADD +</button>
+                            </div>
+                        </div>
+                        <div class="menu-item" data-item-id="21" data-veg="true" data-reordered="false" data-spicy="false" data-recommended="false">
+                            <img src="https://images.timesnownews.com/thumb/msid-112593587,thumbsize-50274,width-400,height-225,resizemode-75/112593587.jpg" alt="Cheese Steam Momos" class="menu-item-image">
+                            <div class="menu-item-content">
+                                <div class="menu-item-title">
+                                    <span>Cheese Steam Momos</span>
+                                </div>
+                                <div class="menu-item-price">
+                                    <span class="current-price">₹119</span>
+                                </div>
+                                <p class="menu-item-desc">Steamed momos filled with cheese and veggies.</p>
+                                <button class="add-to-cart">ADD +</button>
+                            </div>
+                        </div>
+                        <div class="menu-item" data-item-id="22" data-veg="true" data-reordered="true" data-spicy="true" data-recommended="false">
+                            <img src="https://mrprabhu.in/uploads/products/238--1736528545.webp" alt="Veg. Fried Momos" class="menu-item-image">
+                            <div class="menu-item-content">
+                                <div class="menu-item-title">
+                                    <span>Veg. Fried Momos</span>
+                                </div>
+                                <div class="menu-item-price">
+                                    <span class="current-price">₹109</span>
+                                </div>
+                                <p class="menu-item-desc">Crispy fried momos with vegetable filling.</p>
+                                <button class="add-to-cart">ADD +</button>
+                            </div>
+                        </div>
+                        <div class="menu-item" data-item-id="23" data-veg="true" data-reordered="false" data-spicy="true" data-recommended="false">
+                            <img src="https://fat-tiger.in/wp-content/uploads/2022/08/Deep-fried.jpg" alt="Cheese Fried Momos" class="menu-item-image">
+                            <div class="menu-item-content">
+                                <div class="menu-item-title">
+                                    <span>Cheese Fried Momos</span>
+                                </div>
+                                <div class="menu-item-price">
+                                    <span class="current-price">₹129</span>
+                                </div>
+                                <p class="menu-item-desc">Fried momos stuffed with cheese and veggies.</p>
+                                <button class="add-to-cart">ADD +</button>
+                            </div>
+                        </div>
+                        <div class="menu-item" data-item-id="24" data-veg="true" data-reordered="true" data-spicy="true" data-recommended="true">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQn-Mu6Poyz48nDfXr4aq44n0zJVdEQiW7HOQ&s" alt="Kurkure Momos" class="menu-item-image">
+                            <div class="menu-item-content">
+                                <div class="menu-item-title">
+                                    <span>Kurkure Momos</span>
+                                </div>
+                                <div class="menu-item-price">
+                                    <span class="current-price">₹139</span>
+                                </div>
+                                <p class="menu-item-desc">Crispy kurkure-style momos with spicy filling.</p>
+                                <button class="add-to-cart">ADD +</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-category" data-category="salads">
+                    <h3 class="category-title">Salads</h3>
+                    <div class="menu-container">
+                        <div class="menu-item" data-item-id="25" data-veg="true" data-reordered="true" data-spicy="false" data-recommended="true">
+                            <img src="https://i.ndtvimg.com/i/2017-12/mixed-vegetable-salad-recipe_620x350_81513664105.jpg" alt="Veggie Delight Salad" class="menu-item-image">
+                            <div class="menu-item-content">
+                                <div class="menu-item-title">
+                                    <span>Veggie Delight Salad</span>
+                                </div>
+                                <div class="menu-item-price">
+                                    <span class="current-price">₹99</span>
+                                </div>
+                                <p class="menu-item-desc">Fresh veggies tossed in a light dressing.</p>
+                                <button class="add-to-cart">ADD +</button>
+                            </div>
+                        </div>
+                        <div class="menu-item" data-item-id="26" data-veg="true" data-reordered="false" data-spicy="false" data-recommended="true">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREPl0avunuCyxaUlQLrSoYyt_r0oGTdKK6Ew&s" alt="Corn Patty Salad" class="menu-item-image">
+                            <div class="menu-item-content">
+                                <div class="menu-item-title">
+                                    <span>Corn Patty Salad</span>
+                                </div>
+                                <div class="menu-item-price">
+                                    <span class="current-price">₹109</span>
+                                </div>
+                                <p class="menu-item-desc">Salad with crispy corn patty and greens.</p>
+                                <button class="add-to-cart">ADD +</button>
+                            </div>
+                        </div>
+                        <div class="menu-item" data-item-id="27" data-veg="true" data-reordered="true" data-spicy="false" data-recommended="false">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-JaFtkW4hzPKQMxxjYLNttV1lCWqMQz4TmQ&s" alt="Bean Patty Salad" class="menu-item-image">
+                            <div class="menu-item-content">
+                                <div class="menu-item-title">
+                                    <span>Bean Patty Salad</span>
+                                </div>
+                                <div class="menu-item-price">
+                                    <span class="current-price">₹119</span>
+                                </div>
+                                <p class="menu-item-desc">Salad with protein-rich bean patty and veggies.</p>
+                                <button class="add-to-cart">ADD +</button>
+                            </div>
+                        </div>
+                        <div class="menu-item" data-item-id="28" data-veg="true" data-reordered="false" data-spicy="true" data-recommended="false">
+                            <img src="https://instamart-media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_960,w_960//InstamartAssets/Receipes/nachos_salad.webp" alt="Nachos Salad" class="menu-item-image">
+                            <div class="menu-item-content">
+                                <div class="menu-item-title">
+                                    <span>Nachos Salad</span>
+                                </div>
+                                <div class="menu-item-price">
+                                    <span class="current-price">₹129</span>
+                                </div>
+                                <p class="menu-item-desc">Crunchy nachos with fresh salad and salsa.</p>
+                                <button class="add-to-cart">ADD +</button>
+                            </div>
+                        </div>
+                        <div class="menu-item" data-item-id="29" data-veg="true" data-reordered="true" data-spicy="false" data-recommended="true">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT84Kq2mciiuV2332X5f1Twwaj0JqotxSZiFg&s" alt="Chana Patty Salad" class="menu-item-image">
+                            <div class="menu-item-content">
+                                <div class="menu-item-title">
+                                    <span>Chana Patty Salad</span>
+                                </div>
+                                <div class="menu-item-price">
+                                    <span class="current-price">₹119</span>
+                                </div>
+                                <p class="menu-item-desc">Salad with chana patty and fresh greens.</p>
+                                <button class="add-to-cart">ADD +</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-category" data-category=" -snacks">
+                    <h3 class="category-title">  Snacks</h3>
+                    <div class="menu-container">
+                        <div class="menu-item" data-item-id="41" data-veg="true">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-j3nfx0oLfRL6qCjA1SoTEQDiJsh8LfatHQ&s" alt="Noodles Burger" class="menu-item-image">
+                            <div class="menu-item-content">
+                                <div class="menu-item-title"><span>Noodles Burger</span></div>
+                                <div class="menu-item-price"><span class="current-price">₹99</span></div>
+                                <p class="menu-item-desc">Burger with a crispy noodles patty.</p>
+                                <button class="add-to-cart">ADD +</button>
+                            </div>
+                        </div>
+                        <div class="menu-item" data-item-id="42" data-veg="true">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1_o_xTLADLbXQqw-8H95zhLwvoUwObHP9xg&s" alt="Double Tikki Burger" class="menu-item-image">
+                            <div class="menu-item-content">
+                                <div class="menu-item-title"><span>Double Tikki Burger</span></div>
+                                <div class="menu-item-price"><span class="current-price">₹109</span></div>
+                                <p class="menu-item-desc">Burger with double veg tikki and sauces.</p>
+                                <button class="add-to-cart">ADD +</button>
+                            </div>
+                        </div>
+                        <div class="menu-item" data-item-id="43" data-veg="true">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZ0muyvn70TLdr9CSY2dYu3HcbRuyce8IphA&s" alt="Noodles Kathi Roll" class="menu-item-image">
+                            <div class="menu-item-content">
+                                <div class="menu-item-title"><span>Noodles Kathi Roll</span></div>
+                                <div class="menu-item-price"><span class="current-price">₹99</span></div>
+                                <p class="menu-item-desc">Kathi roll filled with stir-fried noodles.</p>
+                                <button class="add-to-cart">ADD +</button>
+                            </div>
+                        </div>
+                        <div class="menu-item" data-item-id="44" data-veg="true">
+                            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiVvLe4BvXxQWfKwRRNwgycXXMo4nd4k6K-VDrOim9TAVyGAnrOE2pCv873-KFRf1ZNxR-f7stElCsBWWTC_0G0fq960udINKsCTHLF9OW01bzkhS6GmZad3oq4LYN4g48Y72NBS2j_0wQ/s1600/9856.jpg" alt="Manchurian Kathi Roll" class="menu-item-image">
+                            <div class="menu-item-content">
+                                <div class="menu-item-title"><span>Manchurian Kathi Roll</span></div>
+                                <div class="menu-item-price"><span class="current-price">₹109</span></div>
+                                <p class="menu-item-desc">Kathi roll with veg Manchurian filling.</p>
+                                <button class="add-to-cart">ADD +</button>
+                            </div>
+                        </div>
+                        <div class="menu-item" data-item-id="45" data-veg="true">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmKmR7MGK-jqvB88xQ0pRy6dGsInWIubB3oSLjLHXzjP_Pyqb131Lh_53s_XbDx21FtcA&usqp=CAU" alt="Chilly Paneer Roll" class="menu-item-image">
+                            <div class="menu-item-content">
+                                <div class="menu-item-title"><span>Chilly Paneer Roll</span></div>
+                                <div class="menu-item-price"><span class="current-price">₹119</span></div>
+                                <p class="menu-item-desc">Kathi roll with spicy chilly paneer.</p>
+                                <button class="add-to-cart">ADD +</button>
+                            </div>
+                        </div>
+                        <div class="menu-item" data-item-id="46" data-veg="true">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWflwB7e_iDZLws_OqLt2djomUC4wn77nXRA&s" alt="Veg. Noodles" class="menu-item-image">
+                            <div class="menu-item-content">
+                                <div class="menu-item-title"><span>Veg. Noodles</span></div>
+                                <div class="menu-item-price"><span class="current-price">₹89</span></div>
+                                <p class="menu-item-desc">Classic stir-fried vegetable noodles.</p>
+                                <button class="add-to-cart">ADD +</button>
+                            </div>
+                        </div>
+                        <div class="menu-item" data-item-id="47" data-veg="true">
+                            <img src="https://pupswithchopsticks.com/wp-content/uploads/hakka-noodles-5.webp" alt="Hakka Noodles" class="menu-item-image">
+                            <div class="menu-item-content">
+                                <div class="menu-item-title"><span>Hakka Noodles</span></div>
+                                <div class="menu-item-price"><span class="current-price">₹99</span></div>
+                                <p class="menu-item-desc">Hakka-style stir-fried noodles with veggies.</p>
+                                <button class="add-to-cart">ADD +</button>
+                            </div>
+                        </div>
+                        <div class="menu-item" data-item-id="48" data-veg="true">
+                            <img src="https://s3-eu-west-1.amazonaws.com/s3-gousto-production-media/cms/mood-image/2353---10-Min-Spicy-Chilli-Paneer-Noodles-0971-1571154475632.jpg" alt="Chilly Paneer Noodles" class="menu-item-image">
+                            <div class="menu-item-content">
+                                <div class="menu-item-title"><span>Chilly Paneer Noodles</span></div>
+                                <div class="menu-item-price"><span class="current-price">₹119</span></div>
+                                <p class="menu-item-desc">Noodles tossed with spicy paneer and veggies.</p>
+                                <button class="add-to-cart">ADD +</button>
+                            </div>
+                        </div>
+                        <div class="menu-item" data-item-id="49" data-veg="true">
+                            <img src="https://www.cookshideout.com/wp-content/uploads/2014/11/Veg-Manchurian-Low-Fat-FI.jpg" alt="Veg. Manchurian" class="menu-item-image">
+                            <div class="menu-item-content">
+                                <div class="menu-item-title"><span>Veg. Manchurian</span></div>
+                                <div class="menu-item-price"><span class="current-price">₹109</span></div>
+                                <p class="menu-item-desc">Vegetable Manchurian balls in sauce.</p>
+                                <button class="add-to-cart">ADD +</button>
+                            </div>
+                        </div>
+                        <div class="menu-item" data-item-id="50" data-veg="true">
+                            <img src="https://static.india.com/wp-content/uploads/2024/10/1st-2024-10-30T204927.206.jpg?impolicy=Medium_Widthonly&w=400&h=800" alt="Cheese Manchurian" class="menu-item-image">
+                            <div class="menu-item-content">
+                                <div class="menu-item-title"><span>Cheese Manchurian</span></div>
+                                <div class="menu-item-price"><span class="current-price">₹129</span></div>
+                                <p class="menu-item-desc">Cheese-stuffed Manchurian balls in sauce.</p>
+                                <button class="add-to-cart">ADD +</button>
+                            </div>
+                        </div>
+                        <div class="menu-item" data-item-id="51" data-veg="true">
+                            <img src="https://pyramideats.com/cdn/shop/products/WhatsAppImage2023-01-07at2.09.14PM.jpg?v=1673080818" alt="Cheese Chilly" class="menu-item-image">
+                            <div class="menu-item-content">
+                                <div class="menu-item-title"><span>Cheese Chilly</span></div>
+                                <div class="menu-item-price"><span class="current-price">₹129</span></div>
+                                <p class="menu-item-desc">Cheese cubes tossed in spicy chilly sauce.</p>
+                                <button class="add-to-cart">ADD +</button>
+                            </div>
+                        </div>
+                        <div class="menu-item" data-item-id="52" data-veg="true">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSyCQWoR6oovSC9ReF3g1MmHOQiMd1wmiRyPA&s" alt="Honey Chilly Potato" class="menu-item-image">
+                            <div class="menu-item-content">
+                                <div class="menu-item-title"><span>Honey Chilly Potato</span></div>
+                                <div class="menu-item-price"><span class="current-price">₹99</span></div>
+                                <p class="menu-item-desc">Crispy potatoes tossed in honey and chilly sauce.</p>
+                                <button class="add-to-cart">ADD +</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-category" data-category="beverages">
+                    <h3 class="category-title">Beverages</h3>
+                    <div class="menu-container">
+                        <div class="menu-item" data-item-id="101" data-veg="true">
+                            <img src="https://budleaf.com/wp-content/uploads/2023/04/shutterstock_2175082285-1568x1045.jpg" alt="Lemon Ice Tea" class="menu-item-image">
+                            <div class="menu-item-content">
+                                <div class="menu-item-title"><span>Lemon Ice Tea</span></div>
+                                <div class="menu-item-price"><span class="current-price">₹69</span></div>
+                                <p class="menu-item-desc">Refreshing lemon-flavored iced tea.</p>
+                                <button class="add-to-cart">ADD +</button>
+                            </div>
+                        </div>
+                        <div class="menu-item" data-item-id="102" data-veg="true">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDXar-X5k7qtZUwlrWoeXgxO-ZMVnmkhqa6A&s" alt="Peach Ice Tea" class="menu-item-image">
+                            <div class="menu-item-content">
+                                <div class="menu-item-title"><span>Peach Ice Tea</span></div>
+                                <div class="menu-item-price"><span class="current-price">₹69</span></div>
+                                <p class="menu-item-desc">Chilled peach-flavored iced tea.</p>
+                                <button class="add-to-cart">ADD +</button>
+                            </div>
+                        </div>
+                        <div class="menu-item" data-item-id="103" data-veg="true">
+                            <img src="https://cdn.foodaciously.com/static/recipes/6a8cad49-6315-416d-995f-9c6861996228/lychee-iced-tea-b5557cf2e58ecc5f0615a1812e98bc0b-1920-q80.jpg" alt="Lychee Ice Tea" class="menu-item-image">
+                            <div class="menu-item-content">
+                                <div class="menu-item-title"><span>Lychee Ice Tea</span></div>
+                                <div class="menu-item-price"><span class="current-price">₹69</span></div>
+                                <p class="menu-item-desc">Lychee-flavored iced tea, served chilled.</p>
+                                <button class="add-to-cart">ADD +</button>
+                            </div>
+                        </div>
+                        <div class="menu-item" data-item-id="104" data-veg="true">
+                            <img src="https://cdn.indiaphile.info/wp-content/uploads/2023/02/stp-masala-soda-6468.jpg?width=1200&format=webp" alt="Masala Lemonade" class="menu-item-image">
+                            <div class="menu-item-content">
+                                <div class="menu-item-title"><span>Masala Lemonade</span></div>
+                                <div class="menu-item-price"><span class="current-price">₹49</span></div>
+                                <p class="menu-item-desc">Refreshing lemonade with a hint of masala.</p>
+                                <button class="add-to-cart">ADD +</button>
+                            </div>
+                        </div>
+                        <div class="menu-item" data-item-id="105" data-veg="true">
+                            <img src="https://shwetainthekitchen.com/wp-content/uploads/2021/05/Sweet-lassi.jpg" alt="Sweet Lassi" class="menu-item-image">
+                            <div class="menu-item-content">
+                                <div class="menu-item-title"><span>Sweet Lassi</span></div>
+                                <div class="menu-item-price"><span class="current-price">₹59</span></div>
+                                <p class="menu-item-desc">Traditional sweet yogurt-based drink.</p>
+                                <button class="add-to-cart">ADD +</button>
+                            </div>
+                        </div>
+                        <div class="menu-item" data-item-id="106" data-veg="true">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTm3qBgxLPnwF4rkh5sl_80drLxZRlG2NrfaQ&s" alt="Namkeen Lassi" class="menu-item-image">
+                            <div class="menu-item-content">
+                                <div class="menu-item-title"><span>Namkeen Lassi</span></div>
+                                <div class="menu-item-price"><span class="current-price">₹59</span></div>
+                                <p class="menu-item-desc">Salty yogurt-based lassi with spices.</p>
+                                <button class="add-to-cart">ADD +</button>
+                            </div>
+                        </div>
+                        <div class="menu-item" data-item-id="107" data-veg="true">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7HN8AiGNBnRRMXEzB8ONaK4QJoAW0zhJ49A&s" alt="Cold Coffee" class="menu-item-image">
+                            <div class="menu-item-content">
+                                <div class="menu-item-title"><span>Cold Coffee</span></div>
+                                <div class="menu-item-price"><span class="current-price">₹79</span></div>
+                                <p class="menu-item-desc">Chilled coffee with milk and ice.</p>
+                                <button class="add-to-cart">ADD +</button>
+                            </div>
+                        </div>
+                        <div class="menu-item" data-item-id="108" data-veg="true">
+                            <img src="https://static.toiimg.com/thumb/84226147.cms?imgsize=310635&width=800&height=800" alt="BlueBerry Shake" class="menu-item-image">
+                            <div class="menu-item-content">
+                                <div class="menu-item-title"><span>BlueBerry Shake</span></div>
+                                <div class="menu-item-price"><span class="current-price">₹99</span></div>
+                                <p class="menu-item-desc">Creamy shake with blueberry flavor.</p>
+                                <button class="add-to-cart">ADD +</button>
+                            </div>
+                        </div>
+                        <div class="menu-item" data-item-id="109" data-veg="true">
+                            <img src="https://www.shutterstock.com/image-photo/milk-shake-banana-on-wooden-600nw-520214896.jpg" alt="Banana Caramel Shake" class="menu-item-image">
+                            <div class="menu-item-content">
+                                <div class="menu-item-title"><span>Banana Caramel Shake</span></div>
+                                <div class="menu-item-price"><span class="current-price">₹99</span></div>
+                                <p class="menu-item-desc">Banana shake with caramel flavor.</p>
+                                <button class="add-to-cart">ADD +</button>
+                            </div>
+                        </div>
+                        <div class="menu-item" data-item-id="110" data-veg="true">
+                            <img src="https://hungryinthailand.com/wp-content/uploads/2024/03/thai-mango-shake.webp" alt="Mango Shake" class="menu-item-image">
+                            <div class="menu-item-content">
+                                <div class="menu-item-title"><span>Mango Shake</span></div>
+                                <div class="menu-item-price"><span class="current-price">₹99</span></div>
+                                <p class="menu-item-desc">Rich and creamy mango shake.</p>
+                                <button class="add-to-cart">ADD +</button>
+                            </div>
+                        </div>
+                        <div class="menu-item" data-item-id="111" data-veg="true">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlcuhqVhq17OSrrcvTeX48CXzpi49SSq6a4Q&s" alt="Strawberry Shake" class="menu-item-image">
+                            <div class="menu-item-content">
+                                <div class="menu-item-title"><span>Strawberry Shake</span></div>
+                                <div class="menu-item-price"><span class="current-price">₹99</span></div>
+                                <p class="menu-item-desc">Strawberry flavored milkshake.</p>
+                                <button class="add-to-cart">ADD +</button>
+                            </div>
+                        </div>
+                        <div class="menu-item" data-item-id="112" data-veg="true">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnWxOZTFu4jl3Ni59y7n-R0trHf_-iSJlMxg&s" alt="Bubblegum Shake" class="menu-item-image">
+                            <div class="menu-item-content">
+                                <div class="menu-item-title"><span>Bubblegum Shake</span></div>
+                                <div class="menu-item-price"><span class="current-price">₹99</span></div>
+                                <p class="menu-item-desc">Fun and sweet bubblegum flavored shake.</p>
+                                <button class="add-to-cart">ADD +</button>
+                            </div>
+                        </div>
+                        <div class="menu-item" data-item-id="113" data-veg="true">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAzi_KTQBapKfSN380v2_IapMCTpQs1RaZYw&s" alt="Chocolate Shake" class="menu-item-image">
+                            <div class="menu-item-content">
+                                <div class="menu-item-title"><span>Chocolate Shake</span></div>
+                                <div class="menu-item-price"><span class="current-price">₹99</span></div>
+                                <p class="menu-item-desc">Classic chocolate milkshake.</p>
+                                <button class="add-to-cart">ADD +</button>
+                            </div>
+                        </div>
+                        <div class="menu-item" data-item-id="114" data-veg="true">
+                            <img src="https://www.thespruceeats.com/thmb/NDZPaGu-Kv6ZP3LnsiJzRkqc0es=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/cookie-milkshake-recipe-305397-step-05-742fc9b5ae6644918afa2e59a0798cc8.jpg" alt="Cookie Crunch Shake" class="menu-item-image">
+                            <div class="menu-item-content">
+                                <div class="menu-item-title"><span>Cookie Crunch Shake</span></div>
+                                <div class="menu-item-price"><span class="current-price">₹109</span></div>
+                                <p class="menu-item-desc">Milkshake with cookie crunch pieces.</p>
+                                <button class="add-to-cart">ADD +</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="additional-items-sidebar">
+                <h3 class="category-title">Additional Items</h3>
+                <div class="menu-container">
+                    <div class="menu-item" data-item-id="30" data-veg="true" data-reordered="false" data-spicy="false" data-recommended="false">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTy8e3173QSKmujZElaFMvMjHI2P8hv-gKFrA&s" alt="Bread Toast" class="menu-item-image">
+                        <div class="menu-item-content">
+                            <div class="menu-item-title"><span>Bread Toast</span></div>
+                            <div class="menu-item-price"><span class="current-price">₹49</span></div>
+                            <p class="menu-item-desc">Crispy toasted bread slices.</p>
+                            <button class="add-to-cart">ADD +</button>
+                        </div>
+                    </div>
+                    <div class="menu-item" data-item-id="31" data-veg="true" data-reordered="true" data-spicy="false" data-recommended="true">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGypiYATldTEgnO-7pY2RItAGnSxqEA2mwmNd5FtKtSg4fd2y1GI3NEq4mM102ejW8ReU&usqp=CAU" alt="Nutri Chaap" class="menu-item-image">
+                        <div class="menu-item-content">
+                            <div class="menu-item-title"><span>Nutri Chaap</span></div>
+                            <div class="menu-item-price"><span class="current-price">₹99</span></div>
+                            <p class="menu-item-desc">Protein-rich soya chaap preparation.</p>
+                            <button class="add-to-cart">ADD +</button>
+                        </div>
+                    </div>
+                    <div class="menu-item" data-item-id="32" data-veg="true" data-reordered="false" data-spicy="false" data-recommended="false">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxNJiuPVKv48BB7Tz2wVfLjMyLvPnatfq1vg&s" alt="Aloo Prantha" class="menu-item-image">
+                        <div class="menu-item-content">
+                            <div class="menu-item-title"><span>Aloo Prantha</span></div>
+                            <div class="menu-item-price"><span class="current-price">₹59</span></div>
+                            <p class="menu-item-desc">Stuffed potato flatbread.</p>
+                            <button class="add-to-cart">ADD +</button>
+                        </div>
+                    </div>
+                    <div class="menu-item" data-item-id="33" data-veg="false" data-reordered="false" data-spicy="true" data-recommended="false">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQrnz8inp7lRxjZtKJs-CZXDiKcTKP0B0jrg&s" alt="Keema Gobhi Prantha" class="menu-item-image">
+                        <div class="menu-item-content">
+                            <div class="menu-item-title"><span>Keema Gobhi Prantha</span></div>
+                            <div class="menu-item-price"><span class="current-price">₹79</span></div>
+                            <p class="menu-item-desc">Minced soya and cauliflower stuffed flatbread.</p>
+                            <button class="add-to-cart">ADD +</button>
+                        </div>
+                    </div>
+                    <div class="menu-item" data-item-id="34" data-veg="true" data-reordered="true" data-spicy="false" data-recommended="false">
+                        <img src="https://www.chefajaychopra.com/assets/img/recipe/1-16685846141-1652773562ajayclientbanner24pngwebp.webp" alt="Mix Prantha" class="menu-item-image">
+                        <div class="menu-item-content">
+                            <div class="menu-item-title"><span>Mix Prantha</span></div>
+                            <div class="menu-item-price"><span class="current-price">₹69</span></div>
+                            <p class="menu-item-desc">Mixed vegetable stuffed flatbread.</p>
+                            <button class="add-to-cart">ADD +</button>
+                        </div>
+                    </div>
+                    <div class="menu-item" data-item-id="35" data-veg="true" data-reordered="false" data-spicy="false" data-recommended="false">
+                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiaRlUQKZVZRhCiZ8SiNPZ3wDjiv2bgEEM9nGu27z9635cs-3AN9e89zlvIMASq5sTyPIjKL-s_cx3uU1-gYsvzgYbSwkkL6LYXf8reS2sIQvcd-6EZZJH1jwCJuq93zkCvlwzbJTC53eez/s1600/DSC_0910-012.JPG" alt="Pyaz Prantha" class="menu-item-image">
+                        <div class="menu-item-content">
+                            <div class="menu-item-title"><span>Pyaz Prantha</span></div>
+                            <div class="menu-item-price"><span class="current-price">₹59</span></div>
+                            <p class="menu-item-desc">Onion stuffed flatbread.</p>
+                            <button class="add-to-cart">ADD +</button>
+                        </div>
+                    </div>
+                    <div class="menu-item" data-item-id="36" data-veg="true" data-reordered="true" data-spicy="false" data-recommended="true">
+                        <img src="https://www.cookwithmanali.com/wp-content/uploads/2013/09/Paneer-Paratha-Homemade.jpg" alt="Paneer Prantha" class="menu-item-image">
+                        <div class="menu-item-content">
+                            <div class="menu-item-title"><span>Paneer Prantha</span></div>
+                            <div class="menu-item-price"><span class="current-price">₹79</span></div>
+                            <p class="menu-item-desc">Cottage cheese stuffed flatbread.</p>
+                            <button class="add-to-cart">ADD +</button>
+                        </div>
+                    </div>
+                    <div class="menu-item" data-item-id="37" data-veg="true" data-reordered="false" data-spicy="false" data-recommended="false">
+                        <img src="https://cdn.uengage.io/uploads/28289/image-U43ASL-1720180624.jpg" alt="Mini Thali" class="menu-item-image">
+                        <div class="menu-item-content">
+                            <div class="menu-item-title"><span>Mini Thali</span></div>
+                            <div class="menu-item-price"><span class="current-price">₹129</span></div>
+                            <p class="menu-item-desc">Mini Indian meal platter.</p>
+                            <button class="add-to-cart">ADD +</button>
+                        </div>
+                    </div>
+                    <div class="menu-item" data-item-id="38" data-veg="true" data-reordered="true" data-spicy="false" data-recommended="true">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMOIwKrJOmNMr5_866mKKX9kRRDpZhLeFiug&s" alt="Special Thali" class="menu-item-image">
+                        <div class="menu-item-content">
+                            <div class="menu-item-title"><span>Special Thali</span></div>
+                            <div class="menu-item-price"><span class="current-price">₹179</span></div>
+                            <p class="menu-item-desc">Special Indian meal platter.</p>
+                            <button class="add-to-cart">ADD +</button>
+                        </div>
+                    </div>
+                    <div class="menu-item" data-item-id="39" data-veg="true" data-reordered="false" data-spicy="false" data-recommended="false">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTwEnpH5DvXLGkDmsxfitO6pCb1VvEEDGLVQ&s" alt="Fried Rice" class="menu-item-image">
+                        <div class="menu-item-content">
+                            <div class="menu-item-title"><span>Fried Rice</span></div>
+                            <div class="menu-item-price"><span class="current-price">₹89</span></div>
+                            <p class="menu-item-desc">Stir-fried rice with vegetables.</p>
+                            <button class="add-to-cart">ADD +</button>
+                        </div>
+                    </div>
+                    <div class="menu-item" data-item-id="40" data-veg="true" data-reordered="false" data-spicy="false" data-recommended="false">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKStVOXWmEfeozslVM6A0Hh6Cu3SEc5_GRBZ3oOwAupIMYBgaSaX1Bq8FD2OzeQCxWdEk&usqp=CAU" alt="Extra Roti 2pc." class="menu-item-image">
+                        <div class="menu-item-content">
+                            <div class="menu-item-title"><span>Extra Roti 2pc.</span></div>
+                            <div class="menu-item-price"><span class="current-price">₹29</span></div>
+                            <p class="menu-item-desc">Two extra pieces of roti.</p>
+                            <button class="add-to-cart">ADD +</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="floating-cart" id="floatingCart">
+            <i class="fas fa-shopping-bag"></i>
+            <div class="cart-badge" id="cartBadge">0</div>
+        </div>
+    </div>
+    
+    <!-- Cart Modal -->
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-content">
+            <div class="cart-header">
+                <div class="cart-title">Your Order</div>
+                <button class="close-cart" id="closeCart">&times;</button>
+            </div>
+            <div class="cart-items" id="cartItems">
+                <!-- Cart items will be inserted here by JavaScript -->
+            </div>
+            <div class="cart-footer">
+                <div class="cart-total">
+                    <span>Total:</span>
+                    <span id="cartTotal">₹0</span>
+                </div>
+                <button class="checkout-btn" id="checkoutBtn">PROCEED TO CHECKOUT</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Toast Notification -->
+    <div class="toast" id="toast"></div>
+
+    <script>
+        // Menu Data
+        const menuItems = [
+            // Burgers & Wraps
+            { id: 1, name: "Classic Veg. Burger", category: "burgers-wraps", price: 99, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbV99RCBOONtEciCm857490YDIkj_slCo4zg&s", veg: true, reordered: true, spicy: false, recommended: true },
+            { id: 2, name: "Punjabi Tadka Burger", category: "burgers-wraps", price: 119, image: "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/RX_THUMBNAIL/IMAGES/VENDOR/2024/12/31/ea13cfef-a659-41c5-9fc1-bdc6fd644475_1016715.jpg", veg: true, reordered: false, spicy: true, recommended: true },
+            { id: 3, name: "Tandoori Punch Burger", category: "burgers-wraps", price: 129, image: "https://cdn.shopify.com/s/files/1/0517/4609/files/Augustine_D_Souza_Tandoori_chicken_Burger_c6230925-722a-4987-a51c-4a1eea56c8da_480x480.jpg?v=1732025944", veg: true, reordered: true, spicy: true, recommended: false },
+            { id: 4, name: "Mexican Burger", category: "burgers-wraps", price: 139, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsHWuGF0tflawDLfZdkxo6qKZmR--Ga5_clw&s", veg: true, reordered: false, spicy: true, recommended: false },
+            { id: 5, name: "Chana Kabab Burger", category: "burgers-wraps", price: 119, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQszoTNStAg61W-Re402dXnjclIqOA8i4CuKf7GeE8PaP6jUNvxQxgZcR85-89PDNi5THA&usqp=CAU", veg: true, reordered: true, spicy: false, recommended: true },
+            { id: 6, name: "Crunchy Paneer Burger", category: "burgers-wraps", price: 149, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTj9pBgPjzhnNOF8TN1oGA6dBb-x0IkY17V8QrHiZUbdO7VvDEHKREYqSIwpx95M7Msg5M&usqp=CAU", veg: true, reordered: false, spicy: false, recommended: false },
+            { id: 7, name: "Aloo Tikki Wrap", category: "burgers-wraps", price: 99, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRF2A2QdcI1BATLcwwWnJXnqOD9XI4rUXeimg&s", veg: true, reordered: true, spicy: false, recommended: true },
+            { id: 8, name: "Punjabi Tadka Wrap", category: "burgers-wraps", price: 119, image: "https://instamart-media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_960,w_960//InstamartAssets/Receipes/paneer_tikka_wrap.webp", veg: true, reordered: false, spicy: true, recommended: false },
+            { id: 9, name: "Mexican Wrap", category: "burgers-wraps", price: 129, image: "https://www.vibrantplate.com/wp-content/uploads/2018/12/Tortilla-wraps-08-720x720.jpg", veg: true, reordered: false, spicy: true, recommended: false },
+            { id: 10, name: "Chana Kabab Wrap", category: "burgers-wraps", price: 119, image: "https://storage.googleapis.com/shy-pub/274490/1669380283670_seek.jpeg", veg: true, reordered: true, spicy: false, recommended: true },
+            { id: 11, name: "Crunchy Paneer Wrap", category: "burgers-wraps", price: 149, image: "https://cdn.uengage.io/uploads/18085/image-646359-1717590397.jpeg", veg: true, reordered: false, spicy: false, recommended: false },
+            // Fries & Sandwiches
+            { id: 12, name: "Salted Fries", category: "fries-sandwiches", price: 69, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSV-9bU-mJULT6KuH3fJyF1HhVLA4z_D2Ouuw&s", veg: true, reordered: true, spicy: false, recommended: true },
+            { id: 13, name: "Masala Fries", category: "fries-sandwiches", price: 79, image: "https://www.chilitochoc.com/wp-content/uploads/2022/09/crispy-masala-fries.jpg", veg: true, reordered: false, spicy: true, recommended: false },
+            { id: 14, name: "Peri-Peri Fries", category: "fries-sandwiches", price: 89, image: "https://rppizzeria.com/web/image/product.template/206/image_1024?unique=142cabe", veg: true, reordered: true, spicy: true, recommended: false },
+            { id: 15, name: "Cheesy Fries", category: "fries-sandwiches", price: 99, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5-7pjzFkzPIx8xUOX0CklIkCOue5iHa9zUw&s", veg: true, reordered: false, spicy: false, recommended: true },
+            { id: 16, name: "Cheesy Peri-Peri", category: "fries-sandwiches", price: 109, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNxciKb1XxfNJFQ3Z7QN4XEzjQ-Vc5JfBiYQ&s", veg: true, reordered: false, spicy: true, recommended: false },
+            { id: 17, name: "Simply Veg. Sandwich", category: "fries-sandwiches", price: 79, image: "https://i.ytimg.com/vi/AYxjqZfA9YQ/maxresdefault.jpg", veg: true, reordered: true, spicy: false, recommended: true },
+            { id: 18, name: "Creamy Cheese Sandwich", category: "fries-sandwiches", price: 99, image: "https://www.cookclickndevour.com/wp-content/uploads/2016/03/cream-cheese-sandwich-recipe-b.jpg", veg: true, reordered: false, spicy: false, recommended: false },
+            { id: 19, name: "Cheese Corn Sandwich", category: "fries-sandwiches", price: 109, image: "https://www.vegrecipesofindia.com/wp-content/uploads/2013/07/corn-sandwich-recipe-1.jpg", veg: true, reordered: false, spicy: false, recommended: false },
+            // Momos
+            { id: 20, name: "Veg. Steam Momos", category: "momos", price: 99, image: "https://www.thespruceeats.com/thmb/UnVh_-znw7ikMUciZIx5sNqBtTU=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/steamed-momos-wontons-1957616-hero-01-1c59e22bad0347daa8f0dfe12894bc3c.jpg", veg: true, reordered: true, spicy: false, recommended: true },
+            { id: 21, name: "Cheese Steam Momos", category: "momos", price: 119, image: "https://images.timesnownews.com/thumb/msid-112593587,thumbsize-50274,width-400,height-225,resizemode-75/112593587.jpg", veg: true, reordered: false, spicy: false, recommended: false },
+            { id: 22, name: "Veg. Fried Momos", category: "momos", price: 109, image: "https://mrprabhu.in/uploads/products/238--1736528545.webp", veg: true, reordered: true, spicy: true, recommended: false },
+            { id: 23, name: "Cheese Fried Momos", category: "momos", price: 129, image: "https://fat-tiger.in/wp-content/uploads/2022/08/Deep-fried.jpg", veg: true, reordered: false, spicy: true, recommended: false },
+            { id: 24, name: "Kurkure Momos", category: "momos", price: 139, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQn-Mu6Poyz48nDfXr4aq44n0zJVdEQiW7HOQ&s", veg: true, reordered: true, spicy: true, recommended: true },
+            // Salads
+            { id: 25, name: "Veggie Delight Salad", category: "salads", price: 99, image: "https://i.ndtvimg.com/i/2017-12/mixed-vegetable-salad-recipe_620x350_81513664105.jpg", veg: true, reordered: true, spicy: false, recommended: true },
+            { id: 26, name: "Corn Patty Salad", category: "salads", price: 109, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREPl0avunuCyxaUlQLrSoYyt_r0oGTdKK6Ew&s", veg: true, reordered: false, spicy: false, recommended: true },
+            { id: 27, name: "Bean Patty Salad", category: "salads", price: 119, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-JaFtkW4hzPKQMxxjYLNttV1lCWqMQz4TmQ&s", veg: true, reordered: true, spicy: false, recommended: false },
+            { id: 28, name: "Nachos Salad", category: "salads", price: 129, image: "https://instamart-media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_960,w_960//InstamartAssets/Receipes/nachos_salad.webp", veg: true, reordered: false, spicy: true, recommended: false },
+            { id: 29, name: "Chana Patty Salad", category: "salads", price: 119, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT84Kq2mciiuV2332X5f1Twwaj0JqotxSZiFg&s", veg: true, reordered: true, spicy: false, recommended: true },
+            //  Snacks
+            { id: 41, name: "Noodles Burger", category: " -snacks", price: 99, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-j3nfx0oLfRL6qCjA1SoTEQDiJsh8LfatHQ&s", veg: true },
+            { id: 42, name: "Double Tikki Burger", category: " -snacks", price: 109, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1_o_xTLADLbXQqw-8H95zhLwvoUwObHP9xg&s", veg: true },
+            { id: 43, name: "Noodles Kathi Roll", category: " -snacks", price: 99, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZ0muyvn70TLdr9CSY2dYu3HcbRuyce8IphA&s", veg: true },
+            { id: 44, name: "Manchurian Kathi Roll", category: " -snacks", price: 109, image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiVvLe4BvXxQWfKwRRNwgycXXMo4nd4k6K-VDrOim9TAVyGAnrOE2pCv873-KFRf1ZNxR-f7stElCsBWWTC_0G0fq960udINKsCTHLF9OW01bzkhS6GmZad3oq4LYN4g48Y72NBS2j_0wQ/s1600/9856.jpg", veg: true },
+            { id: 45, name: "Chilly Paneer Roll", category: " -snacks", price: 119, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmKmR7MGK-jqvB88xQ0pRy6dGsInWIubB3oSLjLHXzjP_Pyqb131Lh_53s_XbDx21FtcA&usqp=CAU", veg: true },
+            { id: 46, name: "Veg. Noodles", category: " -snacks", price: 89, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWflwB7e_iDZLws_OqLt2djomUC4wn77nXRA&s", veg: true },
+            { id: 47, name: "Hakka Noodles", category: " -snacks", price: 99, image: "https://pupswithchopsticks.com/wp-content/uploads/hakka-noodles-5.webp", veg: true },
+            { id: 48, name: "Chilly Paneer Noodles", category: " -snacks", price: 119, image: "https://s3-eu-west-1.amazonaws.com/s3-gousto-production-media/cms/mood-image/2353---10-Min-Spicy-Chilli-Paneer-Noodles-0971-1571154475632.jpg", veg: true },
+            { id: 49, name: "Veg. Manchurian", category: " -snacks", price: 109, image: "https://www.cookshideout.com/wp-content/uploads/2014/11/Veg-Manchurian-Low-Fat-FI.jpg", veg: true },
+            { id: 50, name: "Cheese Manchurian", category: " -snacks", price: 129, image: "https://static.india.com/wp-content/uploads/2024/10/1st-2024-10-30T204927.206.jpg?impolicy=Medium_Widthonly&w=400&h=800", veg: true },
+            { id: 51, name: "Cheese Chilly", category: " -snacks", price: 129, image: "https://pyramideats.com/cdn/shop/products/WhatsAppImage2023-01-07at2.09.14PM.jpg?v=1673080818", veg: true },
+            { id: 52, name: "Honey Chilly Potato", category: " -snacks", price: 99, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSyCQWoR6oovSC9ReF3g1MmHOQiMd1wmiRyPA&s", veg: true },
+            // Beverages
+            { id: 101, name: "Lemon Ice Tea", category: "beverages", price: 69, image: "https://budleaf.com/wp-content/uploads/2023/04/shutterstock_2175082285-1568x1045.jpg", veg: true },
+            { id: 102, name: "Peach Ice Tea", category: "beverages", price: 69, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDXar-X5k7qtZUwlrWoeXgxO-ZMVnmkhqa6A&s", veg: true },
+            { id: 103, name: "Lychee Ice Tea", category: "beverages", price: 69, image: "https://cdn.foodaciously.com/static/recipes/6a8cad49-6315-416d-995f-9c6861996228/lychee-iced-tea-b5557cf2e58ecc5f0615a1812e98bc0b-1920-q80.jpg", veg: true },
+            { id: 104, name: "Masala Lemonade", category: "beverages", price: 49, image: "https://cdn.indiaphile.info/wp-content/uploads/2023/02/stp-masala-soda-6468.jpg?width=1200&format=webp", veg: true },
+            { id: 105, name: "Sweet Lassi", category: "beverages", price: 59, image: "https://shwetainthekitchen.com/wp-content/uploads/2021/05/Sweet-lassi.jpg", veg: true },
+            { id: 106, name: "Namkeen Lassi", category: "beverages", price: 59, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTm3qBgxLPnwF4rkh5sl_80drLxZRlG2NrfaQ&s", veg: true },
+            { id: 107, name: "Cold Coffee", category: "beverages", price: 79, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7HN8AiGNBnRRMXEzB8ONaK4QJoAW0zhJ49A&s", veg: true },
+            { id: 108, name: "BlueBerry Shake", category: "beverages", price: 99, image: "https://static.toiimg.com/thumb/84226147.cms?imgsize=310635&width=800&height=800", veg: true },
+            { id: 109, name: "Banana Caramel Shake", category: "beverages", price: 99, image: "https://www.shutterstock.com/image-photo/milk-shake-banana-on-wooden-600nw-520214896.jpg", veg: true },
+            { id: 110, name: "Mango Shake", category: "beverages", price: 99, image: "https://hungryinthailand.com/wp-content/uploads/2024/03/thai-mango-shake.webp", veg: true },
+            { id: 111, name: "Strawberry Shake", category: "beverages", price: 99, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlcuhqVhq17OSrrcvTeX48CXzpi49SSq6a4Q&s", veg: true },
+            { id: 112, name: "Bubblegum Shake", category: "beverages", price: 99, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnWxOZTFu4jl3Ni59y7n-R0trHf_-iSJlMxg&s", veg: true },
+            { id: 113, name: "Chocolate Shake", category: "beverages", price: 99, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAzi_KTQBapKfSN380v2_IapMCTpQs1RaZYw&s", veg: true },
+            { id: 114, name: "Cookie Crunch Shake", category: "beverages", price: 109, image: "https://www.thespruceeats.com/thmb/NDZPaGu-Kv6ZP3LnsiJzRkqc0es=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/cookie-milkshake-recipe-305397-step-05-742fc9b5ae6644918afa2e59a0798cc8.jpg", veg: true },
+            // Additional Items
+            { id: 30, name: "Bread Toast", category: "additional", price: 49, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTy8e3173QSKmujZElaFMvMjHI2P8hv-gKFrA&s", veg: true, reordered: false, spicy: false, recommended: false },
+            { id: 31, name: "Nutri Chaap", category: "additional", price: 99, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGypiYATldTEgnO-7pY2RItAGnSxqEA2mwmNd5FtKtSg4fd2y1GI3NEq4mM102ejW8ReU&usqp=CAU", veg: true, reordered: true, spicy: false, recommended: true },
+            { id: 32, name: "Aloo Prantha", category: "additional", price: 59, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxNJiuPVKv48BB7Tz2wVfLjMyLvPnatfq1vg&s", veg: true, reordered: false, spicy: false, recommended: false },
+            { id: 33, name: "Keema Gobhi Prantha", category: "additional", price: 79, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQrnz8inp7lRxjZtKJs-CZXDiKcTKP0B0jrg&s", veg: false, reordered: false, spicy: true, recommended: false },
+            { id: 34, name: "Mix Prantha", category: "additional", price: 69, image: "https://www.chefajaychopra.com/assets/img/recipe/1-16685846141-1652773562ajayclientbanner24pngwebp.webp", veg: true, reordered: true, spicy: false, recommended: false },
+            { id: 35, name: "Pyaz Prantha", category: "additional", price: 59, image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiaRlUQKZVZRhCiZ8SiNPZ3wDjiv2bgEEM9nGu27z9635cs-3AN9e89zlvIMASq5sTyPIjKL-s_cx3uU1-gYsvzgYbSwkkL6LYXf8reS2sIQvcd-6EZZJH1jwCJuq93zkCvlwzbJTC53eez/s1600/DSC_0910-012.JPG", veg: true, reordered: false, spicy: false, recommended: false },
+            { id: 36, name: "Paneer Prantha", category: "additional", price: 79, image: "https://www.cookwithmanali.com/wp-content/uploads/2013/09/Paneer-Paratha-Homemade.jpg", veg: true, reordered: true, spicy: false, recommended: true },
+            { id: 37, name: "Mini Thali", category: "additional", price: 129, image: "https://cdn.uengage.io/uploads/28289/image-U43ASL-1720180624.jpg", veg: true, reordered: false, spicy: false, recommended: false },
+            { id: 38, name: "Special Thali", category: "additional", price: 179, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMOIwKrJOmNMr5_866mKKX9kRRDpZhLeFiug&s", veg: true, reordered: true, spicy: false, recommended: true },
+            { id: 39, name: "Fried Rice", category: "additional", price: 89, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTwEnpH5DvXLGkDmsxfitO6pCb1VvEEDGLVQ&s", veg: true, reordered: false, spicy: false, recommended: false },
+            { id: 40, name: "Extra Roti 2pc.", category: "additional", price: 29, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKStVOXWmEfeozslVM6A0Hh6Cu3SEc5_GRBZ3oOwAupIMYBgaSaX1Bq8FD2OzeQCxWdEk&usqp=CAU", veg: true, reordered: false, spicy: false, recommended: false }
+        ];
+        
+        // Cart functionality
+        let cart = [];
+        const cartModal = document.getElementById('cartModal');
+        const floatingCart = document.getElementById('floatingCart');
+        const cartItemsContainer = document.getElementById('cartItems');
+        const cartBadge = document.getElementById('cartBadge');
+        const cartTotal = document.getElementById('cartTotal');
+        const closeCart = document.getElementById('closeCart');
+        const checkoutBtn = document.getElementById('checkoutBtn');
+        const toast = document.getElementById('toast');
+        
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add event listeners to all "ADD +" buttons
+            document.querySelectorAll('.add-to-cart').forEach(button => {
+                button.addEventListener('click', function() {
+                    const menuItem = this.closest('.menu-item');
+                    const itemId = parseInt(menuItem.dataset.itemId);
+                    addToCart(itemId);
+                });
+            });
+            
+            // Cart modal functionality
+            floatingCart.addEventListener('click', openCart);
+            closeCart.addEventListener('click', closeCartModal);
+            checkoutBtn.addEventListener('click', checkout);
+            
+            // Filter functionality
+            document.querySelectorAll('.filter-checkbox').forEach(checkbox => {
+                checkbox.addEventListener('change', filterMenuItems);
+            });
+            
+            // Always call filterMenuItems on page load to reset view
+            filterMenuItems();
+            
+            // Close modal when clicking outside
+            cartModal.addEventListener('click', function(e) {
+                if (e.target === cartModal) {
+                    closeCartModal();
+                }
+            });
+            
+            // Load cart from localStorage if available
+            const savedCart = localStorage.getItem('restaurantCart');
+            if (savedCart) {
+                cart = JSON.parse(savedCart);
+                updateCartBadge();
+            }
+        });
+        
+        // Add item to cart
+        function addToCart(itemId) {
+            const item = menuItems.find(i => i.id === itemId);
+            if (!item) return;
+            
+            const existingItem = cart.find(i => i.id === itemId);
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    ...item,
+                    quantity: 1
+                });
+            }
+            
+            updateCart();
+            showToast(`${item.name} added to cart`);
+        }
+        
+        // Update cart UI
+        function updateCart() {
+            updateCartBadge();
+            renderCartItems();
+            saveCartToLocalStorage();
+        }
+        
+        // Update cart badge
+        function updateCartBadge() {
+            const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+            cartBadge.textContent = totalItems;
+        }
+        
+        // Render cart items in modal
+        function renderCartItems() {
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = '<div class="empty-cart">Your cart is empty</div>';
+                cartTotal.textContent = '₹0';
+                return;
+            }
+            
+            let itemsHTML = '';
+            let total = 0;
+            
+            cart.forEach(item => {
+                total += item.price * item.quantity;
+                
+                itemsHTML += `
+                    <div class="cart-item" data-item-id="${item.id}">
+                        <img src="${item.image}" alt="${item.name}" class="cart-item-image">
+                        <div class="cart-item-details">
+                            <div class="cart-item-name">${item.name}</div>
+                            <div class="cart-item-price">₹${item.price}</div>
+                            <div class="cart-item-controls">
+                                <button class="quantity-btn minus">-</button>
+                                <span class="quantity">${item.quantity}</span>
+                                <button class="quantity-btn plus">+</button>
+                                <button class="remove-item">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            cartItemsContainer.innerHTML = itemsHTML;
+            cartTotal.textContent = `₹${total}`;
+            
+            // Add event listeners to quantity buttons
+            document.querySelectorAll('.quantity-btn.minus').forEach(button => {
+                button.addEventListener('click', function() {
+                    const itemId = parseInt(this.closest('.cart-item').dataset.itemId);
+                    updateCartItemQuantity(itemId, -1);
+                });
+            });
+            
+            document.querySelectorAll('.quantity-btn.plus').forEach(button => {
+                button.addEventListener('click', function() {
+                    const itemId = parseInt(this.closest('.cart-item').dataset.itemId);
+                    updateCartItemQuantity(itemId, 1);
+                });
+            });
+            
+            document.querySelectorAll('.remove-item').forEach(button => {
+                button.addEventListener('click', function() {
+                    const itemId = parseInt(this.closest('.cart-item').dataset.itemId);
+                    removeFromCart(itemId);
+                });
+            });
+        }
+        
+        // Update item quantity in cart
+        function updateCartItemQuantity(itemId, change) {
+            const itemIndex = cart.findIndex(i => i.id === itemId);
+            if (itemIndex === -1) return;
+            
+            cart[itemIndex].quantity += change;
+            
+            if (cart[itemIndex].quantity <= 0) {
+                cart.splice(itemIndex, 1);
+            }
+            
+            updateCart();
+        }
+        
+        // Remove item from cart
+        function removeFromCart(itemId) {
+            cart = cart.filter(item => item.id !== itemId);
+            updateCart();
+            showToast('Item removed from cart');
+        }
+        
+        // Open cart modal
+        function openCart() {
+            renderCartItems();
+            cartModal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+        
+        // Close cart modal
+        function closeCartModal() {
+            cartModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Checkout function
+        function checkout() {
+            if (cart.length === 0) {
+                showToast('Your cart is empty', 'error');
+                return;
+            }
+            
+            // In a real app, this would redirect to checkout page
+            alert(`Proceeding to checkout with ${cart.reduce((total, item) => total + item.quantity, 0)} items. Total: ₹${cart.reduce((total, item) => total + (item.price * item.quantity), 0)}`);
+            closeCartModal();
+        }
+        
+        // Show toast notification
+        function showToast(message, type = 'success') {
+            toast.textContent = message;
+            const rootStyles = getComputedStyle(document.documentElement);
+            const successColor = rootStyles.getPropertyValue('--success-color').trim() || '#48c479';
+            const errorColor = rootStyles.getPropertyValue('--error-color').trim() || '#e74c3c';
+            toast.style.backgroundColor = type === 'success' ? successColor : errorColor;
+            toast.classList.add('show');
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+        
+        // Save cart to localStorage
+        function saveCartToLocalStorage() {
+            localStorage.setItem('restaurantCart', JSON.stringify(cart));
+        }
+        
+        // Filter menu items based on selected filters
+        function filterMenuItems() {
+            const vegFilter = document.getElementById('veg').checked;
+            const recommendedFilter = document.getElementById('recommended').checked;
+            const spicyFilter = document.getElementById('spicy').checked;
+            const snacksFilter = document.getElementById('snacks').checked;
+            const friesSandwichesFilter = document.getElementById('fries-sandwiches').checked;
+            const momosFilter = document.getElementById('momos').checked;
+            const beveragesFilter = document.getElementById('beverages').checked;
+
+            // Map filter to category data-category attribute
+            const categoryFilters = [
+                { filter: friesSandwichesFilter, category: 'fries-sandwiches' },
+                { filter: snacksFilter, category: 'snacks' },
+                { filter: momosFilter, category: 'momos' },
+                { filter: beveragesFilter, category: 'beverages' }
+            ];
+            const activeCategories = categoryFilters.filter(f => f.filter).map(f => f.category);
+
+            // Show/hide menu categories
+            document.querySelectorAll('.menu-category').forEach(categoryEl => {
+                // Normalize category name for comparison
+                const category = (categoryEl.getAttribute('data-category') || '').replace(/^[^a-zA-Z0-9]*|\s+/g, '').toLowerCase();
+                if (activeCategories.length === 0 || activeCategories.includes(category)) {
+                    categoryEl.style.display = '';
+                } else {
+                    categoryEl.style.display = 'none';
+                }
+            });
+
+            // Show/hide menu items within visible categories
+            document.querySelectorAll('.menu-category').forEach(categoryEl => {
+                if (categoryEl.style.display === 'none') return;
+                categoryEl.querySelectorAll('.menu-item').forEach(item => {
+                    const isVeg = item.dataset.veg === 'true';
+                    const isSpicy = item.dataset.spicy === 'true';
+                    const isRecommended = item.dataset.recommended === 'true';
+
+                    let shouldShow = true;
+                    if (vegFilter) shouldShow = shouldShow && isVeg;
+                    if (recommendedFilter) shouldShow = shouldShow && isRecommended;
+                    if (spicyFilter) shouldShow = shouldShow && isSpicy;
+                    item.style.display = shouldShow ? 'flex' : 'none';
+                });
+            });
+        }
+    </script>
+</body>
+</html>
