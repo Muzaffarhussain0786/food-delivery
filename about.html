@@ -6,6 +6,65 @@
     <title>About Us | Food Ordering Management System</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+        nav {
+            background: white;
+            padding: 18px 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 999;
+        }
+        .logo img {
+            height: 56px;
+            width: auto;
+            animation: bounce 1s ease-in-out infinite;
+            display: inline;
+        }
+        @keyframes bounce {
+            0%, 100%{ transform: translateY(0); }
+            50%{ transform: translateY(-10px); }
+        }
+        .logo {
+            font-size: 24px;
+            display: inline-block;
+            transition: transform 0.3s ease-in-out;
+        }
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .nav-links li {
+            display: inline-block;
+        }
+        .nav-links a {
+            color: #e67317;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+            padding: 10px 22px;
+            border-radius: 5px;
+            text-underline-offset: 5px;
+            transition: all 0.3s ease-in-out;
+            display: inline-block;
+        }
+        .nav-links a:hover {
+            text-decoration: underline;
+            text-decoration-color: #FFA0A1;
+            animation: bounce 1s ease-in-out;
+        }
+        .nav-links li:last-child a {
+            margin-right: 24px;
+        }
         body {
             margin: 0;
             padding: 0;
@@ -15,13 +74,14 @@
         }
         .container {
             max-width: 900px;
-            margin: 50px auto;
+            margin: 50px auto 0 auto;
             background: #fff;
             border-radius: 20px;
             box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
             padding: 40px 30px;
             position: relative;
             overflow: hidden;
+            margin-top: 110px; /* Slightly more space for navbar shadow */
         }
         .container::before {
             content: '';
@@ -97,7 +157,7 @@
         }
         .feature {
             flex: 1 1 220px;
-            background: #ffe3cc;
+            background: #ffe5cc;
             color: #222;
             border-radius: 14px;
             padding: 24px 18px;
@@ -114,7 +174,71 @@
             margin-bottom: 10px;
             color: #e67317;
         }
+        /* Team Section Styles */
+        .team-section {
+            max-width: 900px;
+            margin: 60px auto 30px auto;
+            background: #ffe5cc;
+            border-radius: 18px;
+            box-shadow: 0 4px 18px 0 rgba(230, 115, 23, 0.13);
+            padding: 36px 24px 28px 24px;
+            text-align: center;
+        }
+        .team-title {
+            color: #e67317;
+            font-size: 2rem;
+            margin-bottom: 28px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        .team-members {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 32px;
+            justify-content: center;
+        }
+        .team-member {
+            background: #fff;
+            border-radius: 14px;
+            box-shadow: 0 2px 10px 0 rgba(230, 115, 23, 0.08);
+            padding: 18px 16px 14px 16px;
+            width: 190px;
+            text-align: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .team-member:hover {
+            transform: translateY(-6px) scale(1.04);
+            box-shadow: 0 8px 24px 0 rgba(230, 115, 23, 0.16);
+        }
+        .team-member img {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 12px;
+            border: 4px solid #ffe5cc;
+            box-shadow: 0 2px 8px 0 rgba(230, 115, 23, 0.10);
+        }
+        .team-member h3 {
+            margin: 10px 0 6px 0;
+            color: #e67317;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+        .team-member p {
+            font-size: 0.98rem;
+            color: #444;
+            margin: 0;
+            line-height: 1.5;
+            word-break: break-all;
+            overflow-wrap: anywhere;
+            text-align: center;
+            max-width: 100%;
+        }
         @media (max-width: 800px) {
+            .container {
+                margin-top: 90px;
+            }
             .about-content {
                 flex-direction: column;
                 gap: 24px;
@@ -123,10 +247,36 @@
                 flex-direction: column;
                 gap: 18px;
             }
+            .team-members {
+                flex-direction: column;
+                gap: 18px;
+            }
+            .team-member {
+                width: 90%;
+                margin: 0 auto;
+            }
+        }
+        @media (max-width: 500px) {
+            .container {
+                margin-top: 70px;
+                padding: 20px 5px;
+            }
         }
     </style>
 </head>
 <body>
+    <nav>
+        <a href="#" class="logo">
+            <img src="logo.jpg" alt="TapToEat Logo">
+        </a>
+        <ul class="nav-links">
+            <li><a href="home.html">HOME</a></li>
+            <li><a href="index.html">MENU</a></li>
+            <li><a href="about.html">ABOUT</a></li>
+            <li><a href="contact.html">CONTACT</a></li>
+            <li><a href="login.html">LOGIN</a></li>
+        </ul>
+    </nav>
     <div class="container">
         <h1>About Us</h1>
         <div class="divider"></div>
@@ -166,6 +316,33 @@
                 <p>We ensure every order is prepared with the freshest ingredients and utmost care.</p>
             </div>
         </div>
+        <!-- Team Section Start -->
+        <div class="team-section">
+            <h2 class="team-title">Meet Our Team</h2>
+            <div class="team-members">
+                <div class="team-member">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Team Member 1">
+                    <h3>Muzaffar Hussain</h3>
+                    <p>Co-Founder & CEO<br>Email: Muzaffarhussain@taptoeat.com</p>
+                </div>
+                <div class="team-member">
+                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Team Member 2">
+                    <h3>Sukhpreet Kaur</h3>
+                    <p>Head of Operations<br>Email: Sukhpreetkaur@taptoeat.com</p>
+                </div>
+                <div class="team-member">
+                    <img src="https://randomuser.me/api/portraits/men/65.jpg" alt="Team Member 3">
+                    <h3>Nishtha Chhabra</h3>
+                    <p>Lead Developer<br>Email: Nishthachhabra@taptoeat.com</p>
+                </div>
+                <div class="team-member">
+                    <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Team Member 4">
+                    <h3>Aditya Singh</h3>
+                    <p>Marketing Manager<br>Email: Adityasingh@taptoeat.com</p>
+                </div>
+            </div>
+        </div>
+        <!-- Team Section End -->
     </div>
 </body>
 </html>
