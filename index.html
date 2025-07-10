@@ -755,9 +755,9 @@
         </a>
         <ul class="nav-links">
             <li><a href="website1.html">HOME</a></li>   
-            <li><a href="mens1.html">MENU</a></li>
+            <li><a href="menu.html">MENU</a></li>
             <li><a href="about.html">ABOUT</a></li>
-            <li><a href="kids.html">CONTACT</a></li>
+            <li><a href="contact.html">CONTACT</a></li>
             <li><a href="login.html">LOGIN</a></li>
         </ul>
       </nav>
@@ -1903,9 +1903,10 @@
                 return;
             }
             
-            // In a real app, this would redirect to checkout page
-            alert(`Proceeding to checkout with ${cart.reduce((total, item) => total + item.quantity, 0)} items. Total: ₹${cart.reduce((total, item) => total + (item.price * item.quantity), 0)}`);
-            closeCartModal();
+        
+            // Save cart to localStorage (already done in updateCart), then redirect to payment page
+            saveCartToLocalStorage();
+            window.location.href = 'payment.html';
         }
         
         // Show toast notification
