@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Payment - Burger hackers</title>
+    <title>Payment - Baba Chicken</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         body {
@@ -20,6 +20,7 @@
             border-radius: 4px;
             margin-bottom: 32px;
             overflow: hidden;
+            margin-top: 80px; /* Push below navbar */
         }
         .progress-bar-inner {
             width: 80%;
@@ -36,6 +37,7 @@
             box-shadow: 0 8px 32px rgba(252,128,25,0.10), 0 1.5px 6px rgba(0,0,0,0.04);
             padding: 36px 28px 28px 28px;
             position: relative;
+            /* margin-top is handled by .progress-bar */
         }
         h2 {
             text-align: center;
@@ -196,13 +198,15 @@
         @media (max-width: 600px) {
             .container {
                 max-width: 98vw;
-                margin: 0.5rem;
+                margin: 0.5rem auto 0 auto;
                 padding: 18px 4vw 18px 4vw;
             }
             .progress-bar {
                 margin-bottom: 18px;
+                margin-top: 60px; /* Smaller top margin for mobile navbar */
             }
         }
+        /* Navbar styles from contact.html */
         nav {
             background: white;
             padding: 18px 14px;
@@ -263,36 +267,20 @@
             margin-right: 24px;
         }
         @media (max-width: 900px) {
-            .container {
-                flex-direction: column;
-                width: 98vw;
-                height: auto;
-                min-height: 100vh;
-            }
-            .left, .right {
-                flex: none;
-                width: 100%;
-                min-width: unset;
-                min-height: 220px;
-                padding: 28px 16px;
-            }
-            .right {
-                padding: 32px 10vw;
-            }
-            .form-title, .form-subtitle, form {
-                max-width: 100%;
+            nav {
+                padding: 12px 4vw;
             }
         }
         @media (max-width: 600px) {
-            .container {
-                width: 100vw;
-                border-radius: 0;
+            nav {
+                padding: 8px 2vw;
             }
-            .right {
-                padding: 24px 4vw;
+            .logo img {
+                height: 40px;
             }
-            .left {
-                padding: 20px 8px 8px 8px;
+            .nav-links a {
+                font-size: 14px;
+                padding: 8px 10px;
             }
         }
     </style>
@@ -310,7 +298,7 @@
             <li><a href="login.html">LOGIN</a></li>
         </ul>
     </nav>
-    <div class="progress-bar" style="margin-top:80px;"><div class="progress-bar-inner"></div></div>
+    <div class="progress-bar"><div class="progress-bar-inner"></div></div>
     <div class="container">
         <h2>Payment</h2>
        
