@@ -25,6 +25,7 @@
       border-radius: 20px;
       overflow: hidden;
       box-shadow: 0 8px 32px 0 rgba(230, 115, 23, 0.10);
+      margin-top: 100px; /* Add margin to prevent content from hiding behind navbar */
     }
     .left {
       flex: 1.1;
@@ -140,14 +141,16 @@
     }
      nav {
             background: white;
-            padding: 13px 18px;
+            padding: 24px 18px; /* Reduced vertical padding for a slightly smaller navbar */
             display: flex;
             justify-content: space-between;
             align-items: center;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 
-            position: sticky;
+            position: fixed; /* Changed from sticky to fixed */
             top: 0;
+            left: 0;
+            width: 100%;
             z-index: 999;
         }
         .logo img {
@@ -169,8 +172,17 @@
             display: inline-block;
             transition: transform 0.3s ease-in-out;
         }
+        .nav-links {
+            display: flex;
+            justify-content: center; /* Center the nav links horizontally */
+            align-items: center;
+            gap: 10px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
         .nav-links li {
-            display: inline;
+            display: inline-block;
         }
         .nav-links a {
             color: #e67317;
@@ -193,6 +205,17 @@
             text-decoration-color: #FFA0A1;
             animation: bounce 1s ease-in-out;
         }
+        .nav-links li:last-child a {
+          margin-right: 24px; /* Space after LOGIN link */
+        }
+    ul {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    padding-inline-start: 40px;
+    unicode-bidi: isolate;
+}
     @media (max-width: 900px) {
       .container {
         flex-direction: column;
@@ -237,7 +260,7 @@
             <li><a href="home.html">HOME</a></li>   
             <li><a href="index.html">MENU</a></li>
             <li><a href="about.html">ABOUT</a></li>
-            <li><a href="kids.html">CONTACT</a></li>
+            <li><a href="contact.html">CONTACT</a></li>
             <li><a href="Login.html">LOGIN</a></li>
         </ul>
       </nav>
